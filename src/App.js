@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React,{useState} from 'react'
 import './App.css';
 
-function App() {
+const App=()=> {
+  const[firstPartner,setFirstPartner]=useState('')
+  const[secondPartner,setSecondPartner]=useState('')
+  const[calculate,setCalculate]=useState('0')
+
+  const getFirstName=(event)=>{
+    setFirstPartner(event.target.value)
+  }
+   const getSecondName=(event)=>{
+   setSecondPartner(event.target.value)
+  }
+  const getcalculation=()=>{
+    setCalculate(Math.floor(Math.random()*100))
+   
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   <div className="container">
+    <h3>Love Calculator</h3>
+    <h2>love blw {firstPartner}❤{secondPartner} is {calculate}%</h2>
+      <input placeholder="enter ur name" value={firstPartner} onChange={getFirstName}/>
+        <input placeholder="enter ur partner name" value={secondPartner} onChange={getSecondName}/>
+        <button onClick={getcalculation}>calculate Love</button>
+      
+      
+      
+        
+   </div>
+    
+ );
 }
 
 export default App;
