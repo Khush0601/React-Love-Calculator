@@ -1,35 +1,33 @@
-import React,{useState} from 'react'
-import './App.css';
-
-const App=()=> {
-  const[firstPartner,setFirstPartner]=useState('')
-  const[secondPartner,setSecondPartner]=useState('')
-  const[calculate,setCalculate]=useState('0')
-
-  const getFirstName=(event)=>{
-    setFirstPartner(event.target.value)
+import React, { useState } from 'react'
+import './App.css'
+const App = () => {
+  const[radioButton,setRadioButton]=useState('female')
+  const onRadioUpdated=(e)=>{
+   setRadioButton(e.target.value)
   }
-   const getSecondName=(event)=>{
-   setSecondPartner(event.target.value)
-  }
-  const getcalculation=()=>{
-    setCalculate(Math.floor(Math.random()*100))
-   
-  }
+  console.log(radioButton)
   return (
-   <div className="container">
-    <h3>Love Calculator</h3>
-    <h2>love blw {firstPartner}❤{secondPartner} is {calculate}%</h2>
-      <input placeholder="enter ur name" value={firstPartner} onChange={getFirstName}/>
-        <input placeholder="enter ur partner name" value={secondPartner} onChange={getSecondName}/>
-        <button onClick={getcalculation}>calculate Love</button>
-      
-      
-      
-        
-   </div>
-    
- );
+    <div>
+     <h1>validation for Radio Buttons </h1>
+     
+     <div className='radio-buttons'>
+     <input type='radio' value='female' id='female' onChange={(e)=>onRadioUpdated(e)} checked={radioButton==='female'}/>
+      <label htmlFor='female'>Female</label>
+     </div>
+     <div className='radio-buttons'>
+     <input type='radio' value='male' id='male' onChange={(e)=>onRadioUpdated(e)} checked={radioButton==='male'} />
+     <label htmlFor='male'>male</label>
+     </div>
+
+     {
+      radioButton==='male' && <h1>he is male</h1>
+     }
+      {
+      radioButton==='female' && <h1>she is female</h1>
+     }
+    </div>
+  )
 }
 
-export default App;
+export default App
+
